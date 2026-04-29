@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 body {
@@ -35,7 +38,7 @@ header h1 {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform .2s;
 }
 
@@ -47,6 +50,7 @@ header h1 {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    -webkit-user-drag: none;
 }
 
 .card h3 {
@@ -75,7 +79,7 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
 }
@@ -84,7 +88,7 @@ footer {
     max-width: 90%;
     max-height: 90%;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .close {
@@ -100,4 +104,175 @@ footer {
 
 .close:hover {
     color: #ff4444;
+}
+
+/* side bar */
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    background: #222;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 900;
+    transition: 0.2s;
+}
+
+.menu-btn.active {
+    z-index: 11000;
+}
+
+.menu-btn:hover {
+    background: #444;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background: #111;
+    color: white;
+    padding: 40px 20px;
+    transition: 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-menu h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.side-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+    transition: 0.2s;
+}
+
+.side-menu a:hover {
+    color: #00aaff;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+/* sidebar popup */
+
+/* Overlay plein écran */
+.popup_center {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(5px);
+    display: none;
+    /* activé en JS */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    padding: 20px;
+    /* pour respirer sur petits écrans */
+}
+
+/* Boîte de la popup, plus grande et auto‑adaptative */
+.popup_box {
+    background: #111;
+    color: #f5f5f5;
+    padding: 30px 32px;
+    border-radius: 14px;
+    max-width: 800px;
+    /* plus large */
+    width: 100%;
+    max-height: 80vh;
+    /* limite en hauteur */
+    overflow-y: auto;
+    /* scroll si beaucoup de texte */
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    animation: popupIn 0.22s ease-out;
+}
+
+/* Titre et texte s’adaptent naturellement */
+#popup_title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+#popup_text {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-wrap;
+    /* garde les retours à la ligne éventuels */
+}
+
+/* Bouton fermer propre */
+.popup_close {
+    align-self: flex-end;
+    margin-top: 8px;
+    padding: 8px 18px;
+    border: none;
+    background: #f5f5f5;
+    color: #111;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.popup_close:hover {
+    background: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.popup_close:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Petite anim d’apparition */
+@keyframes popupIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Optionnel : style responsive encore plus doux sur mobile */
+@media (max-width: 600px) {
+    .popup_box {
+        padding: 22px 20px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    #popup_title {
+        font-size: 1.3rem;
+    }
+
+    #popup_text {
+        font-size: 0.95rem;
+    }
 }

@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="menu-btn" class="menu-btn">☰</div>
+
+    <nav id="side-menu" class="side-menu">
+        <h2>Menu</h2>
+        <a href="">Acceuil</a>
+        <a href="#contact">Contact</a>
+        <a href="#prix">Charte des prix</a>
+    </nav>
+
+    <div id="sidebar_popup" class="popup_center">
+        <div class="popup_box">
+            <h2 id="popup_title"></h2>
+            <p id="popup_text"></p>
+            <button class="popup_close" onclick="closePopup()">Fermer</button>
+        </div>
+    </div>    
 
     <header>
         <h1>Portfolio JSON UI</h1>
@@ -15,77 +31,63 @@
 
     <section class="gallery">
         <div class="card">
-            <img src="images/1.jpg" alt="1">
+            <img src="images/1.jpg" draggable="false" alt="1">
             <h3>Admin shop</h3>
         </div>
-        
         <div class="card">
-            <img src="images/2.jpg" alt="2">
+            <img src="images/2.jpg" draggable="false" alt="2">
             <h3>Interface d'équipe</h3>
         </div>
-        
         <div class="card">
-            <img src="images/3.jpg" alt="3">
+            <img src="images/3.jpg" draggable="false" alt="3">
             <h3>Interface d'amis</h3>
         </div>
-        
         <div class="card">
-            <img src="images/4.jpg" alt="4">
+            <img src="images/4.jpg" draggable="false" alt="4">
             <h3>Interface adaptative de base</h3>
         </div>
-        
         <div class="card">
-            <img src="images/5.jpg" alt="5">
+            <img src="images/5.jpg" draggable="false" alt="5">
             <h3>Catalogue</h3>
         </div>
-        
         <div class="card">
-            <img src="images/6.jpg" alt="6">
+            <img src="images/6.jpg" draggable="false" alt="6">
             <h3>Interface faction</h3>
         </div>
-        
         <div class="card">
-            <img src="images/7.jpg" alt="7">
+            <img src="images/7.jpg" draggable="false" alt="7">
             <h3>Interface adaptative style "grid"</h3>
         </div>
-        
         <div class="card">
-            <img src="images/8.jpg" alt="8">
+            <img src="images/8.jpg" draggable="false" alt="8">
             <h3>Menu pause</h3>
         </div>
-        
         <div class="card">
-            <img src="images/9.jpg" alt="9">
+            <img src="images/9.jpg" draggable="false" alt="9">
             <h3>Informations joueurs & actions</h3>
         </div>
-        
         <div class="card">
-            <img src="images/10.jpg" alt="10">
+            <img src="images/10.jpg" draggable="false" alt="10">
             <h3>"Passe de combat"</h3>
         </div>
-        
         <div class="card">
-            <img src="images/11.jpg" alt="11">
+            <img src="images/11.jpg" draggable="false" alt="11">
             <h3>Scoreboard</h3>
         </div>
-        
         <div class="card">
-            <img src="images/12.jpg" alt="12">
+            <img src="images/12.jpg" draggable="false" alt="12">
             <h3>Interface de progression</h3>
         </div>
-        
         <div class="card">
-            <img src="images/13.png" alt="13">
+            <img src="images/13.png" draggable="false" alt="13">
             <h3>Interface de progression: classement</h3>
-        </div> 
-        
+        </div>
         <div class="card">
-            <img src="images/14.png" alt="14">
+            <img src="images/14.png" draggable="false" alt="14">
             <h3>Interface adaptative style "grid" + emplacement de titre adaptatif</h3>
         </div>
-        
         <div class="card">
-            <img src="images/15.png" alt="15">
+            <img src="images/15.png" draggable="false" alt="15">
             <h3>Interface adaptative custom "ModalForm"</h3>
         </div>
     </section>
@@ -99,25 +101,6 @@
         <p>© 2026 - Mon Portfolio</p>
     </footer>
 
-    <script>
-        const popup = document.getElementById("popup");
-        const popupImg = document.getElementById("popup-img");
-        const closeBtn = document.querySelector(".close");
-    
-        document.querySelectorAll(".card img").forEach(img => {
-            img.addEventListener("click", () => {
-                popup.style.display = "flex";
-                popupImg.src = img.src;
-            });
-        });
-    
-        closeBtn.addEventListener("click", () => {
-            popup.style.display = "none";
-        });
-    
-        popup.addEventListener("click", (e) => {
-            if (e.target === popup) popup.style.display = "none";
-        });
-    </script>    
+    <script src="main.js"></script>
 </body>
 </html>
