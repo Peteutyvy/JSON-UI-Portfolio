@@ -9,8 +9,8 @@
 <body>
 
     <header>
-        <h1>Mon Portfolio</h1>
-        <p>Voici quelques-uns de mes projets</p>
+        <h1>Portfolio JSON UI</h1>
+        <p>Voici quelques-une de mes réalisations</p>
     </header>
 
     <section class="gallery">
@@ -80,9 +80,34 @@
         </div>        
     </section>
 
+    <div id="popup" class="popup">
+        <span class="close">&times;</span>
+        <img id="popup-img" class="popup-content">
+    </div>
+
     <footer>
         <p>© 2026 - Mon Portfolio</p>
     </footer>
 
+    <script>
+        const popup = document.getElementById("popup");
+        const popupImg = document.getElementById("popup-img");
+        const closeBtn = document.querySelector(".close");
+    
+        document.querySelectorAll(".card img").forEach(img => {
+            img.addEventListener("click", () => {
+                popup.style.display = "flex";
+                popupImg.src = img.src;
+            });
+        });
+    
+        closeBtn.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+    
+        popup.addEventListener("click", (e) => {
+            if (e.target === popup) popup.style.display = "none";
+        });
+    </script>    
 </body>
 </html>
