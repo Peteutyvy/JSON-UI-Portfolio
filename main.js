@@ -30,10 +30,9 @@ menuBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("click", (e) => {
-  if (!sideMenu.contains(e.target) && e.target !== menuBtn) {
-    sideMenu.classList.remove("open");
-    menuBtn.classList.remove("active");
-  }
+  if (sideMenu.contains(e.target) || e.target === menuBtn) return;
+  sideMenu.classList.remove("open");
+  menuBtn.classList.remove("active");
 });
 
 // sidebar popup
@@ -41,7 +40,7 @@ document.addEventListener("click", (e) => {
 const popupData = {
   "#contact": {
     title: "Contact",
-    text: "Voici comment me contacter :\n\nDiscord : peteutyvy"
+    text: "Discord : peteutyvy"
   },
   "#prix": {
     title: "Charte des prix",
@@ -57,7 +56,16 @@ Avancé – 18 à 39 €
 
 Complexe – 40 à 60 €
   • Interface très complexe 
-  • Animations`
+  • Animations
+
+Les réalisations affichés ne sont pas disponibles à la vente. Je ne fait que du sur mesure.`
+  },
+  "#infos": {
+    title: "Comment je travaille?",
+    text: `Mes outils de travail:
+  • Visual Studio Code
+  • BlockBench
+  • Minecraft Bedrock`
   }
 };
 
